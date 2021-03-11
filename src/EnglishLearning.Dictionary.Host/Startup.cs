@@ -1,5 +1,7 @@
 using System.Text.Json.Serialization;
+using EnglishLearning.Dictionary.Application.Configuration;
 using EnglishLearning.Dictionary.Host.Infrastructure;
+using EnglishLearning.Dictionary.Web.Infrastructure;
 using EnglishLearning.Utilities.General.Extensions;
 using EnglishLearning.Utilities.Identity.Configuration;
 using EnglishLearning.Utilities.Persistence.Redis.Configuration;
@@ -18,7 +20,6 @@ namespace EnglishLearning.Dictionary.Host
         }
 
         public IConfiguration Configuration { get; }
-
         
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
@@ -46,6 +47,10 @@ namespace EnglishLearning.Dictionary.Host
                         .AllowAnyHeader()
                         .WithExposedHeaders("Authorization", "Content-Disposition"));
             });
+
+            services.AddApplication();
+
+            services.AddAutoMapper(typeof(WebMapperProfile).Assembly);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

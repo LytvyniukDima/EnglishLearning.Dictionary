@@ -6,6 +6,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnglishLearning.Dictionary.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnglishLearning.Dictionary.Web.Contracts", "src\EnglishLearning.Dictionary.Web.Contracts\EnglishLearning.Dictionary.Web.Contracts.csproj", "{FFE47CE4-4732-4074-A2CA-48CF3EABA997}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnglishLearning.Dictionary.Domain", "src\EnglishLearning.Dictionary.Domain\EnglishLearning.Dictionary.Domain.csproj", "{229A0025-8E34-478D-B5BF-0C800649150B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnglishLearning.Dictionary.Application", "src\EnglishLearning.Dictionary.Application\EnglishLearning.Dictionary.Application.csproj", "{A1C203D9-AA30-4DB7-BF24-50574F5EF2DD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +28,13 @@ Global
 		{FFE47CE4-4732-4074-A2CA-48CF3EABA997}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FFE47CE4-4732-4074-A2CA-48CF3EABA997}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FFE47CE4-4732-4074-A2CA-48CF3EABA997}.Release|Any CPU.Build.0 = Release|Any CPU
+		{229A0025-8E34-478D-B5BF-0C800649150B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{229A0025-8E34-478D-B5BF-0C800649150B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{229A0025-8E34-478D-B5BF-0C800649150B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{229A0025-8E34-478D-B5BF-0C800649150B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1C203D9-AA30-4DB7-BF24-50574F5EF2DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1C203D9-AA30-4DB7-BF24-50574F5EF2DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1C203D9-AA30-4DB7-BF24-50574F5EF2DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1C203D9-AA30-4DB7-BF24-50574F5EF2DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
