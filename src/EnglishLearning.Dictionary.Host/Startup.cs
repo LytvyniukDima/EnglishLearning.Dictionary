@@ -1,6 +1,7 @@
 using System.Text.Json.Serialization;
 using EnglishLearning.Dictionary.Application.Configuration;
 using EnglishLearning.Dictionary.Host.Infrastructure;
+using EnglishLearning.Dictionary.Infrastructure.Configuration;
 using EnglishLearning.Dictionary.Web.Infrastructure;
 using EnglishLearning.Utilities.General.Extensions;
 using EnglishLearning.Utilities.Identity.Configuration;
@@ -48,7 +49,9 @@ namespace EnglishLearning.Dictionary.Host
                         .WithExposedHeaders("Authorization", "Content-Disposition"));
             });
 
-            services.AddApplication();
+            services
+                .AddApplication()
+                .AddInfrastructure();
 
             services.AddAutoMapper(typeof(WebMapperProfile).Assembly);
         }
