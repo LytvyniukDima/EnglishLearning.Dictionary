@@ -6,9 +6,11 @@
 
     <ItemGroup>
       <ProjectReference Include="..\EnglishLearning.Dictionary.Domain\EnglishLearning.Dictionary.Domain.csproj" />
+      <ProjectReference Include="..\EnglishLearning.Dictionary.ExternalServices\EnglishLearning.Dictionary.ExternalServices.csproj" />
     </ItemGroup>
 
     <ItemGroup>
+      <PackageReference Include="AutoMapper" Version="10.1.1" />
       <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
     </ItemGroup>
 

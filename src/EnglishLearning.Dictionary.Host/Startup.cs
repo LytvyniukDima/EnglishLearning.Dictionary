@@ -1,7 +1,9 @@
 using System.Text.Json.Serialization;
 using EnglishLearning.Dictionary.Application.Configuration;
+using EnglishLearning.Dictionary.Host.Configuration;
 using EnglishLearning.Dictionary.Host.Infrastructure;
 using EnglishLearning.Dictionary.Infrastructure.Configuration;
+using EnglishLearning.Dictionary.Infrastructure.Infrastructure;
 using EnglishLearning.Dictionary.Web.Infrastructure;
 using EnglishLearning.Utilities.General.Extensions;
 using EnglishLearning.Utilities.Identity.Configuration;
@@ -50,10 +52,13 @@ namespace EnglishLearning.Dictionary.Host
             });
 
             services
+                .AddEnglishLearningHttp(Configuration)
                 .AddApplication()
                 .AddInfrastructure();
 
-            services.AddAutoMapper(typeof(WebMapperProfile).Assembly);
+            services.AddAutoMapper(
+                typeof(WebMapperProfile).Assembly,
+                typeof(InfrastructureMapperProfile).Assembly);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
