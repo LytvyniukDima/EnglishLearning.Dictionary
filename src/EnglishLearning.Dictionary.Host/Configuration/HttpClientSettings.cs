@@ -1,5 +1,6 @@
 using System;
 using EnglishLearning.Dictionary.ExternalServices.Http;
+using EnglishLearning.Utilities.Identity.DelegationHandlers;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -14,9 +15,6 @@ namespace EnglishLearning.Dictionary.Host.Configuration
             var fileManagerAddress = configuration
                 .GetValue<Uri>("ExternalServices:FileManager");
 
-            services.AddTransient<JwtInfoHeaderHandler>();
-            services.AddHttpContextAccessor();
-            
             services
                 .AddHttpClient<FileManagerHttpClient>(c => 
                 {

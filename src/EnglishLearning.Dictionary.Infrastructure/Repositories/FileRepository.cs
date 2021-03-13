@@ -5,7 +5,6 @@ using AutoMapper;
 using EnglishLearning.Dictionary.Domain.Models.FileManager;
 using EnglishLearning.Dictionary.Domain.Repositories;
 using EnglishLearning.Dictionary.ExternalServices.Http;
-using EnglishLearning.Utilities.Identity.Abstractions;
 
 namespace EnglishLearning.Dictionary.Infrastructure.Repositories
 {
@@ -14,17 +13,13 @@ namespace EnglishLearning.Dictionary.Infrastructure.Repositories
         private readonly FileManagerHttpClient _client;
 
         private readonly IMapper _mapper;
-
-        private readonly IJwtInfoProvider _jwtInfoProvider;
         
         public FileRepository(
             FileManagerHttpClient client,
-            IMapper mapper,
-            IJwtInfoProvider jwtInfoProvider)
+            IMapper mapper)
         {
             _client = client;
             _mapper = mapper;
-            _jwtInfoProvider = jwtInfoProvider;
         }
         
         public async Task<FileInfoModel> GetFileInfoAsync(Guid fileId)

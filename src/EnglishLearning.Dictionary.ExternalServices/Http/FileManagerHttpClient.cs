@@ -3,6 +3,7 @@ using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
 using EnglishLearning.Dictionary.ExternalServices.Contracts;
+using EnglishLearning.Utilities.Http.Extensions;
 
 namespace EnglishLearning.Dictionary.ExternalServices.Http
 {
