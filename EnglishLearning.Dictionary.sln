@@ -14,6 +14,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnglishLearning.Dictionary.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnglishLearning.Dictionary.ExternalServices", "src\EnglishLearning.Dictionary.ExternalServices\EnglishLearning.Dictionary.ExternalServices.csproj", "{EADA46B5-DD25-4972-B814-0ECB566F9C5E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnglishLearning.Dictionary.Common.Models", "src\EnglishLearning.Dictionary.Common.Models\EnglishLearning.Dictionary.Common.Models.csproj", "{73008AEC-68F2-4F27-967C-33FF80008ECA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,5 +50,9 @@ Global
 		{EADA46B5-DD25-4972-B814-0ECB566F9C5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EADA46B5-DD25-4972-B814-0ECB566F9C5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EADA46B5-DD25-4972-B814-0ECB566F9C5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73008AEC-68F2-4F27-967C-33FF80008ECA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73008AEC-68F2-4F27-967C-33FF80008ECA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73008AEC-68F2-4F27-967C-33FF80008ECA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73008AEC-68F2-4F27-967C-33FF80008ECA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

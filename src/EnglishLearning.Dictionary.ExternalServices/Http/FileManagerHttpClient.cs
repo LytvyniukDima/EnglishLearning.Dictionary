@@ -25,7 +25,7 @@ namespace EnglishLearning.Dictionary.ExternalServices.Http
         
         public async Task LoadFileToStreamAsync(Guid fileId, Stream outputStream)
         {
-            var url = $"{BaseUrl}/file/{fileId.ToString()}/details";
+            var url = $"{BaseUrl}/file/{fileId.ToString()}";
 
             await using var stream = await _httpClient.GetStreamAsync(url);
             await stream.CopyToAsync(outputStream);
