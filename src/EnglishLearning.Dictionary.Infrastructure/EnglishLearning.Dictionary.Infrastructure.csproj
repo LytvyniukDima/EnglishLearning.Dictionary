@@ -5,6 +5,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\EnglishLearning.Dictionary.DB\EnglishLearning.Dictionary.DB.csproj" />
       <ProjectReference Include="..\EnglishLearning.Dictionary.Domain\EnglishLearning.Dictionary.Domain.csproj" />
       <ProjectReference Include="..\EnglishLearning.Dictionary.ExternalServices\EnglishLearning.Dictionary.ExternalServices.csproj" />
     </ItemGroup>

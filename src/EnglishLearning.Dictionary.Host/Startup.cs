@@ -54,7 +54,7 @@ namespace EnglishLearning.Dictionary.Host
             services
                 .AddEnglishLearningHttp(Configuration)
                 .AddApplication()
-                .AddInfrastructure();
+                .AddInfrastructure(Configuration);
 
             services.AddAutoMapper(
                 typeof(WebMapperProfile).Assembly,
