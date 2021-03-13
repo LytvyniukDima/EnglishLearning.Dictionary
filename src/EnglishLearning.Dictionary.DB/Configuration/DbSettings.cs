@@ -21,16 +21,16 @@ namespace EnglishLearning.Dictionary.DB.Configuration
                 .AddMongoConfiguration(configuration)
                 .AddMongoContext(options =>
                 {
-                    options.HasIndex<WordMetadataEntity>(index =>
+                    options.HasIndex<WordMetadataMongoEntity>(index =>
                     {
                         index.CreateOne(
-                            new CreateIndexModel<WordMetadataEntity>(
-                                Builders<WordMetadataEntity>.IndexKeys.Ascending(x => x.Word)));
+                            new CreateIndexModel<WordMetadataMongoEntity>(
+                                Builders<WordMetadataMongoEntity>.IndexKeys.Ascending(x => x.Word)));
                     });
                 })
                 .AddMongoCollectionNamesProvider(x =>
                 {
-                    x.Add<WordMetadataEntity>("EnglishWordMetadata");
+                    x.Add<WordMetadataMongoEntity>("EnglishWordMetadata");
                 });
             
             services.AddTransient<IWordMetadataMongoRepository, WordMetadataMongoRepository>();

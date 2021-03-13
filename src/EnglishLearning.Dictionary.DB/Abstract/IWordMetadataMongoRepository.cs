@@ -3,7 +3,7 @@ using EnglishLearning.Utilities.Persistence.Interfaces;
 
 namespace EnglishLearning.Dictionary.DB.Abstract
 {
-    public interface IWordMetadataMongoRepository : IBaseRepository<WordMetadataEntity, string>
+    public interface IWordMetadataMongoRepository : IBaseRepository<WordMetadataMongoEntity, string>
     {
     }
 }

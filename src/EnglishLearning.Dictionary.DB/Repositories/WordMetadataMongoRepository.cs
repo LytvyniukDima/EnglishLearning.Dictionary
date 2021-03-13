@@ -5,7 +5,7 @@ using EnglishLearning.Utilities.Persistence.Mongo.Repositories;
 
 namespace EnglishLearning.Dictionary.DB.Repositories
 {
-    internal class WordMetadataMongoRepository : BaseMongoRepository<WordMetadataEntity, string>, IWordMetadataMongoRepository
+    internal class WordMetadataMongoRepository : BaseMongoRepository<WordMetadataMongoEntity, string>, IWordMetadataMongoRepository
     {
         public WordMetadataMongoRepository(MongoContext mongoContext)
             : base(mongoContext)

@@ -5,7 +5,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace EnglishLearning.Dictionary.DB.Entities
 {
-    public class WordMetadataEntity : IEntity<string>
+    public class WordMetadataMongoEntity : IEntity<string>
     {
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }

@@ -15,13 +15,17 @@ namespace EnglishLearning.Dictionary.Application.Services
     {
         private readonly IFileRepository _fileRepository;
 
+        private readonly IWordMetadataRepository _wordMetadataRepository;
+        
         private readonly ILogger<CreateMetadataService> _logger;
         
         public CreateMetadataService(
             IFileRepository fileRepository,
+            IWordMetadataRepository wordMetadataRepository,
             ILogger<CreateMetadataService> logger)
         {
             _fileRepository = fileRepository;
+            _wordMetadataRepository = wordMetadataRepository;
             _logger = logger;
         }
 
@@ -38,6 +42,7 @@ namespace EnglishLearning.Dictionary.Application.Services
             var headerFields = parser.ReadFields();
             var indexMap = GetFieldsIndexMap(headerFields);
             var addedWordSet = new HashSet<string>();
+            var wordsMetadata = new List<WordMetadataModel>();
             
             while (parser.PeekChars(1) != null)
             {
@@ -62,9 +67,11 @@ namespace EnglishLearning.Dictionary.Application.Services
                     POS = rowCells[indexMap[MetadataFileColumns.POS]],
                     Topic = rowCells[indexMap[MetadataFileColumns.Topic]],
                 };
-                
-                _logger.LogWarning($"{metadata.Word} {metadata.GuideWord} {metadata.Level.ToString()} {metadata.POS} {metadata.Topic}");
+
+                wordsMetadata.Add(metadata);
             }
+
+            await _wordMetadataRepository.AddAllAsync(wordsMetadata);
         }
 
         private IReadOnlyDictionary<string, int> GetFieldsIndexMap(string[] fields)

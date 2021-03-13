@@ -13,7 +13,8 @@ namespace EnglishLearning.Dictionary.Infrastructure.Configuration
             IConfiguration configuration)
         {
             services.AddTransient<IFileRepository, FileRepository>();
-
+            services.AddTransient<IWordMetadataRepository, WordMetadataRepository>();
+            
             services.AddDbConfiguration(configuration);
             
             return services;
