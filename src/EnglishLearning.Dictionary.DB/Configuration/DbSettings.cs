@@ -25,7 +25,8 @@ namespace EnglishLearning.Dictionary.DB.Configuration
                     {
                         index.CreateOne(
                             new CreateIndexModel<WordMetadataMongoEntity>(
-                                Builders<WordMetadataMongoEntity>.IndexKeys.Ascending(x => x.Word)));
+                                Builders<WordMetadataMongoEntity>.IndexKeys.Ascending(x => x.Word),
+                                new CreateIndexOptions() { Unique = true }));
                     });
                 })
                 .AddMongoCollectionNamesProvider(x =>

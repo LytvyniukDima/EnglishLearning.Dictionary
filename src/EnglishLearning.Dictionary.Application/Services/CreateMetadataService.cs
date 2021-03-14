@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using EnglishLearning.Dictionary.Application.Abstract;
 using EnglishLearning.Dictionary.Application.Constants;
@@ -31,6 +32,8 @@ namespace EnglishLearning.Dictionary.Application.Services
 
         public async Task CreateWordMetadataAsync(CreateWordMetadataCommandModel createCommand)
         {
+            var addedWords =await _wordMetadataRepository.GetAllWordsAsync();
+            
             await using var fileStream = await _fileRepository.GetFileAsync(createCommand.FileId);
             using var parser = new TextFieldParser(fileStream);
 
@@ -41,7 +44,7 @@ namespace EnglishLearning.Dictionary.Application.Services
             
             var headerFields = parser.ReadFields();
             var indexMap = GetFieldsIndexMap(headerFields);
-            var addedWordSet = new HashSet<string>();
+            var addedWordSet = addedWords.ToHashSet();
             var wordsMetadata = new List<WordMetadataModel>();
             
             while (parser.PeekChars(1) != null)
@@ -68,6 +71,7 @@ namespace EnglishLearning.Dictionary.Application.Services
                     Topic = rowCells[indexMap[MetadataFileColumns.Topic]],
                 };
 
+                addedWordSet.Add(metadata.Word);
                 wordsMetadata.Add(metadata);
             }
 

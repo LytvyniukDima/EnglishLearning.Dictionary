@@ -38,5 +38,12 @@ namespace EnglishLearning.Dictionary.Infrastructure.Repositories
 
             return models;
         }
+
+        public async Task<IReadOnlyList<string>> GetAllWordsAsync()
+        {
+            var entities = await _mongoRepository.GetAllAsync();
+
+            return entities.Select(x => x.Word).ToList();
+        }
     }
 }

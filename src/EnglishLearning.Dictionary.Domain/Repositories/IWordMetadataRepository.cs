@@ -9,5 +9,7 @@ namespace EnglishLearning.Dictionary.Domain.Repositories
         Task AddAllAsync(IReadOnlyList<WordMetadataModel> words);
 
         Task<IReadOnlyList<WordMetadataModel>> FindAllAsync(IReadOnlyList<string> words);
+
+        Task<IReadOnlyList<string>> GetAllWordsAsync();
     }
 }
