@@ -15,6 +15,7 @@ jobs:
 
     runs-on: ubuntu-latest
     env:
+      PACKAGES_WORKFLOW_TOKEN: ${{ secrets.PACKAGES_WORKFLOW_TOKEN }}
       root-directory: '.'
       common-models-directory: './src/EnglishLearning.Dictionary.Common.Models'
       contracts-directory: './src/EnglishLearning.Dictionary.Web.Contracts'
@@ -31,8 +32,6 @@ jobs:
         source-url: https://nuget.pkg.github.com/LytvyniukDima/index.json
       env:
         NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
-    - name: Build
-      run: dotnet build -c Release
     - name: Pack Common Models
       run: dotnet pack -c Release -o . -p:PackageVersion=$MAJOR.$MINOR.$GITHUB_RUN_NUMBER
       working-directory: ${{env.common-models-directory}}
