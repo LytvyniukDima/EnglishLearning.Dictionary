@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using EnglishLearning.Dictionary.DB.Abstract;
@@ -27,6 +28,15 @@ namespace EnglishLearning.Dictionary.Infrastructure.Repositories
             var entities = _mapper.Map<IReadOnlyList<WordMetadataMongoEntity>>(words);
 
             await _mongoRepository.AddManyAsync(entities);
+        }
+
+        public async Task<IReadOnlyList<WordMetadataModel>> FindAllAsync(IReadOnlyList<string> words)
+        {
+            var entities = await _mongoRepository.FindAllAsync(x => words.Contains(x.Word));
+
+            var models = _mapper.Map<IReadOnlyList<WordMetadataModel>>(entities);
+
+            return models;
         }
     }
 }

@@ -7,5 +7,7 @@ namespace EnglishLearning.Dictionary.Domain.Repositories
     public interface IWordMetadataRepository
     {
         Task AddAllAsync(IReadOnlyList<WordMetadataModel> words);
+
+        Task<IReadOnlyList<WordMetadataModel>> FindAllAsync(IReadOnlyList<string> words);
     }
 }
