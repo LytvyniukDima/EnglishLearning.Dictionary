@@ -2,7 +2,7 @@ name: Http Client
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
     paths:
       - 'src/EnglishLearning.Dictionary.Client/**'
       - 'src/EnglishLearning.Dictionary.Web.Contracts/**'
