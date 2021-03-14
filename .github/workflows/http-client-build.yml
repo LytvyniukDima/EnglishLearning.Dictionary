@@ -8,6 +8,7 @@ on:
       - 'src/EnglishLearning.Dictionary.Web.Contracts/**'
       - 'src/EnglishLearning.Dictionary.Common.Models/**'
       - '.github/workflows/http-client-build.yml'
+  workflow_dispatch:
 
 jobs:
   build:
