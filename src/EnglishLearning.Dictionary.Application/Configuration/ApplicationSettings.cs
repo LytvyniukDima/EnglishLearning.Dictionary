@@ -9,6 +9,7 @@ namespace EnglishLearning.Dictionary.Application.Configuration
         public static IServiceCollection AddApplication(this IServiceCollection services)
         {
             services.AddTransient<ICreateMetadataService, CreateMetadataService>();
+            services.AddTransient<IWordMetadataQueryService, WordMetadataQueryService>();
             
             return services;
         }

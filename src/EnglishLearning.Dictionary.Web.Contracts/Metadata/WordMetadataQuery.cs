@@ -2,8 +2,8 @@ using System.Collections.Generic;
 
 namespace EnglishLearning.Dictionary.Web.Contracts.Metadata
 {
-    public class AnalysedWordQuery
+    public class WordMetadataQuery
     {
-        private IReadOnlyList<AnalysedWord> Words { get; set; }
+        public IReadOnlyList<string> Words { get; set; }
     }
 }

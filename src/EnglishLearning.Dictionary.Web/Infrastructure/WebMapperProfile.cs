@@ -9,6 +9,9 @@ namespace EnglishLearning.Dictionary.Web.Infrastructure
         public WebMapperProfile()
         {
             CreateMap<CreateWordMetadataCommand, CreateWordMetadataCommandModel>();
+
+            CreateMap<WordMetadataModel, WordMetadata>();
+            CreateMap<WordMetadataQuery, WordMetadataQueryModel>();
         }
     }
 }

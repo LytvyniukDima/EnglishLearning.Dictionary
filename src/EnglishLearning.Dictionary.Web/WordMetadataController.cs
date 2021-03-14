@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using EnglishLearning.Dictionary.Application.Abstract;
@@ -17,28 +18,42 @@ namespace EnglishLearning.Dictionary.Web
 
         private readonly ICreateMetadataService _createMetadataService;
 
+        private readonly IWordMetadataQueryService _wordMetadataQueryService;
+        
         private readonly IMapper _mapper;
         
         public WordMetadataController(
             ILogger<WordMetadataController> logger,
             ICreateMetadataService createMetadataService,
+            IWordMetadataQueryService wordMetadataQueryService,
             IMapper mapper)
         {
             _logger = logger;
             _createMetadataService = createMetadataService;
+            _wordMetadataQueryService = wordMetadataQueryService;
             _mapper = mapper;
         }
         
         [EnglishLearningAuthorize(AuthorizeRole.Admin)]
-        [HttpPost]
+        [HttpPost("command")]
         public async Task<IActionResult> Create([FromBody] CreateWordMetadataCommand createCommand)
         {
-            _logger.LogError(createCommand.FileId.ToString());
-
             var createModel = _mapper.Map<CreateWordMetadataCommandModel>(createCommand);
             await _createMetadataService.CreateWordMetadataAsync(createModel);
             
             return Ok();
+        }
+        
+        [EnglishLearningAuthorize(AuthorizeRole.Admin)]
+        [HttpPost("query")]
+        public async Task<IActionResult> Get([FromBody] WordMetadataQuery query)
+        {
+            var queryModel = _mapper.Map<WordMetadataQueryModel>(query);
+            var words = await _wordMetadataQueryService.GetAsync(queryModel);
+
+            var webModels = _mapper.Map<IReadOnlyList<WordMetadata>>(words);
+            
+            return Ok(webModels);
         }
     }
 }
