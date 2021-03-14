@@ -4,4 +4,8 @@
         <TargetFramework>net5.0</TargetFramework>
     </PropertyGroup>
 
+    <PropertyGroup>
+        <PackageDescription>Dictionary Common Models</PackageDescription>
+        <RepositoryUrl>https://github.com/LytvyniukDima/EnglishLearning.Dictionary</RepositoryUrl>
+    </PropertyGroup>
 </Project>
