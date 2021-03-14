@@ -31,13 +31,15 @@ jobs:
         source-url: https://nuget.pkg.github.com/LytvyniukDima/index.json
       env:
         NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+    - name: Build
+      run: dotnet build -c Release
     - name: Pack Common Models
       run: dotnet pack -c Release -o . -p:PackageVersion=$MAJOR.$MINOR.$GITHUB_RUN_NUMBER
       working-directory: ${{env.common-models-directory}}
     - name: Pack Contracts
       run: dotnet pack -c Release -o . -p:PackageVersion=$MAJOR.$MINOR.$GITHUB_RUN_NUMBER
       working-directory: ${{env.contracts-directory}}
-    - name: Pack Common Models
+    - name: Pack Client
       run: dotnet pack -c Release -o . -p:PackageVersion=$MAJOR.$MINOR.$GITHUB_RUN_NUMBER
       working-directory: ${{env.client-directory}}
     - name: Publish
