@@ -44,7 +44,6 @@ namespace EnglishLearning.Dictionary.Web
             return Ok();
         }
         
-        [EnglishLearningAuthorize(AuthorizeRole.Admin)]
         [HttpPost("query")]
         public async Task<IActionResult> Get([FromBody] WordMetadataQuery query)
         {

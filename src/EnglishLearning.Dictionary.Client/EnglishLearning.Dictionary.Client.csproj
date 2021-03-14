@@ -10,7 +10,7 @@
     </PropertyGroup>
     
     <ItemGroup>
-        <PackageReference Include="EnglishLearning.Utilities.Http.Extensions" Version="1.0.0-649772281" />    
+        <PackageReference Include="EnglishLearning.Utilities.Http.Extensions" Version="1.0.0-652061300" />    
     </ItemGroup>
     
     <ItemGroup>
