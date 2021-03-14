@@ -24,8 +24,6 @@ jobs:
         source-url: https://nuget.pkg.github.com/LytvyniukDima/index.json
       env:
         NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
-    - name: Test
-      run: dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput="./coverage.opencover.xml"
     - name: SonarInit
       if: ${{ false }}
       run: |
