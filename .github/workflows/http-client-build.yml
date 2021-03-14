@@ -1,0 +1,44 @@
+name: Http Client
+
+on:
+  push:
+    branches: [ master ]
+    paths:
+      - 'src/EnglishLearning.Dictionary.Client/**'
+      - 'src/EnglishLearning.Dictionary.Web.Contracts/**'
+      - 'src/EnglishLearning.Dictionary.Common.Models/**'
+      - '.github/workflows/http-client-build.yml'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    env:
+      root-directory: '.'
+      common-models-directory: './src/EnglishLearning.Dictionary.Common.Models'
+      contracts-directory: './src/EnglishLearning.Dictionary.Web.Contracts'
+      client-directory: './src/EnglishLearning.Dictionary.Client'
+      MAJOR: 1
+      MINOR: 0
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '5.0.x'
+        source-url: https://nuget.pkg.github.com/LytvyniukDima/index.json
+      env:
+        NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+    - name: Pack Common Models
+      run: dotnet pack -c Release -o . -p:PackageVersion=$MAJOR.$MINOR.$GITHUB_RUN_NUMBER
+      working-directory: ${{env.common-models-directory}}
+    - name: Pack Contracts
+      run: dotnet pack -c Release -o . -p:PackageVersion=$MAJOR.$MINOR.$GITHUB_RUN_NUMBER
+      working-directory: ${{env.contracts-directory}}
+    - name: Pack Common Models
+      run: dotnet pack -c Release -o . -p:PackageVersion=$MAJOR.$MINOR.$GITHUB_RUN_NUMBER
+      working-directory: ${{env.client-directory}}
+    - name: Publish
+      run: dotnet nuget push '*.nupkg'
+      working-directory: ${{env.root-directory}}

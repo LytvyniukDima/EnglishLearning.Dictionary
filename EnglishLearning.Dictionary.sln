@@ -18,6 +18,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnglishLearning.Dictionary.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnglishLearning.Dictionary.DB", "src\EnglishLearning.Dictionary.DB\EnglishLearning.Dictionary.DB.csproj", "{AB54158A-1D90-4371-8E76-FCF12862AD23}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnglishLearning.Dictionary.Client", "src\EnglishLearning.Dictionary.Client\EnglishLearning.Dictionary.Client.csproj", "{D2CF0AD1-ACE4-4183-8D14-4F180B430F6F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -60,5 +62,9 @@ Global
 		{AB54158A-1D90-4371-8E76-FCF12862AD23}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AB54158A-1D90-4371-8E76-FCF12862AD23}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AB54158A-1D90-4371-8E76-FCF12862AD23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2CF0AD1-ACE4-4183-8D14-4F180B430F6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2CF0AD1-ACE4-4183-8D14-4F180B430F6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2CF0AD1-ACE4-4183-8D14-4F180B430F6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2CF0AD1-ACE4-4183-8D14-4F180B430F6F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
