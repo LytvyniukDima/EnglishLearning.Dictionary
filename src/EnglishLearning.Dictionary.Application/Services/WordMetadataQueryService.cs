@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EnglishLearning.Dictionary.Application.Abstract;
+using EnglishLearning.Dictionary.Application.Constants;
 using EnglishLearning.Dictionary.Domain.Models.Metadata;
 using EnglishLearning.Dictionary.Domain.Repositories;
 using Microsoft.Extensions.Logging;
@@ -25,7 +26,7 @@ namespace EnglishLearning.Dictionary.Application.Services
         public async Task<IReadOnlyList<WordMetadataModel>> GetAsync(WordMetadataQueryModel query)
         {
             var words = query.Words
-                .Select(x => x.ToLower())
+                .Select(x => MapWordsWithApostrophe(x.ToLower()))
                 .ToList();
 
             var wordsMetadata = await _metadataRepository.FindAllAsync(words);
@@ -37,6 +38,16 @@ namespace EnglishLearning.Dictionary.Application.Services
             }
 
             return wordsMetadata;
+        }
+        
+        private string MapWordsWithApostrophe(string word)
+        {
+            if (AbbreviationConstants.WordsWithApostropheMap.TryGetValue(word, out string mapped))
+            {
+                return mapped;
+            }
+
+            return word;
         }
     }
 }

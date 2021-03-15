@@ -32,7 +32,7 @@ namespace EnglishLearning.Dictionary.Application.Services
 
         public async Task CreateWordMetadataAsync(CreateWordMetadataCommandModel createCommand)
         {
-            var addedWords =await _wordMetadataRepository.GetAllWordsAsync();
+            var addedWords = await _wordMetadataRepository.GetAllWordsAsync();
             
             await using var fileStream = await _fileRepository.GetFileAsync(createCommand.FileId);
             using var parser = new TextFieldParser(fileStream);
@@ -54,9 +54,10 @@ namespace EnglishLearning.Dictionary.Application.Services
                 {
                     continue;
                 }
-
+                
                 var englishLevelField = rowCells[indexMap[MetadataFileColumns.Level]];
                 var word = rowCells[indexMap[MetadataFileColumns.BaseWord]];
+
                 if (addedWordSet.Contains(word))
                 {
                     continue;
@@ -64,7 +65,7 @@ namespace EnglishLearning.Dictionary.Application.Services
                 
                 var metadata = new WordMetadataModel
                 {
-                    Word = word,
+                    Word = word.ToLower(),
                     GuideWord = rowCells[indexMap[MetadataFileColumns.GuideWord]],
                     Level = EnglishLevelMapInternal[englishLevelField],
                     POS = rowCells[indexMap[MetadataFileColumns.POS]],
