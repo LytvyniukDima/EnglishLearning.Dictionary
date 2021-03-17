@@ -17,7 +17,7 @@ namespace EnglishLearning.Dictionary.Host.Configuration
                 .GetValue<Uri>("ExternalServices:FileManager");
 
             var wordsApiAddress = configuration
-                .GetValue<Uri>("WordsApi");
+                .GetValue<Uri>("ExternalServices:WordsApi");
             
             services
                 .AddHttpClient<FileManagerHttpClient>(c => 

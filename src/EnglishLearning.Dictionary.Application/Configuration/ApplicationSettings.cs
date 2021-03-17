@@ -10,6 +10,7 @@ namespace EnglishLearning.Dictionary.Application.Configuration
         {
             services.AddTransient<ICreateMetadataService, CreateMetadataService>();
             services.AddTransient<IWordMetadataQueryService, WordMetadataQueryService>();
+            services.AddTransient<IWordQueryService, WordQueryService>();
             
             return services;
         }

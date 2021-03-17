@@ -1,5 +1,7 @@
 using AutoMapper;
+using EnglishLearning.Dictionary.Domain.Models;
 using EnglishLearning.Dictionary.Domain.Models.Metadata;
+using EnglishLearning.Dictionary.Web.Contracts;
 using EnglishLearning.Dictionary.Web.Contracts.Metadata;
 
 namespace EnglishLearning.Dictionary.Web.Infrastructure
@@ -12,6 +14,9 @@ namespace EnglishLearning.Dictionary.Web.Infrastructure
 
             CreateMap<WordMetadataModel, WordMetadata>();
             CreateMap<WordMetadataQuery, WordMetadataQueryModel>();
+
+            CreateMap<WordDetailsModel, WordDetails>();
+            CreateMap<WordDefinitionModel, WordDefinition>();
         }
     }
 }
