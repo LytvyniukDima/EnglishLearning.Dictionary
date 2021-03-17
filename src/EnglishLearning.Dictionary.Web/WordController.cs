@@ -23,9 +23,9 @@ namespace EnglishLearning.Dictionary.Web
         [HttpGet("{word}")]
         public async Task<IActionResult> Get([FromRoute] string word)
         {
-            var details = await _queryService.GetWordDetailsAsync(word);
+            var searchModel = await _queryService.SearchAsync(word);
 
-            var webModel = _mapper.Map<WordDetails>(details);
+            var webModel = _mapper.Map<WordSearch>(searchModel);
 
             return Ok(webModel);
         }

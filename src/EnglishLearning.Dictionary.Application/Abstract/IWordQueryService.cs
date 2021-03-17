@@ -5,6 +5,6 @@ namespace EnglishLearning.Dictionary.Application.Abstract
 {
     public interface IWordQueryService
     {
-        Task<WordDetailsModel> GetWordDetailsAsync(string word);
+        Task<WordSearchModel> SearchAsync(string word);
     }
 }

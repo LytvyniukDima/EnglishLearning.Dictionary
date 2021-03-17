@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using EnglishLearning.Dictionary.Application.Abstract;
 using EnglishLearning.Dictionary.Domain.Models;
@@ -14,9 +15,24 @@ namespace EnglishLearning.Dictionary.Application.Services
             _wordRepository = wordRepository;
         }
         
-        public Task<WordDetailsModel> GetWordDetailsAsync(string word)
+        public async Task<WordSearchModel> SearchAsync(string word)
         {
-            return _wordRepository.GetWordDetailsAsync(word);
+            var details = await _wordRepository.GetWordDetailsAsync(word);
+            if (details != null)
+            {
+                return new WordSearchModel()
+                {
+                    Word = details,
+                    SimilarWords = Array.Empty<string>(),
+                };
+            }
+
+            var similarWords = await _wordRepository.SearchAsync(word);
+            return new WordSearchModel()
+            {
+                Word = null,
+                SimilarWords = similarWords,
+            };
         }
     }
 }

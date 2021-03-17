@@ -39,7 +39,7 @@ namespace EnglishLearning.Dictionary.ExternalServices.Http
         
         public Task<WordSearchContract> SearchAsync(string pattern, int count)
         {
-            var url = new Uri($"{WordsUrl}/?letterPattern={pattern}&count={count}&page=1", UriKind.Relative);
+            var url = new Uri($"{WordsUrl}/?letterPattern={pattern}&limit={count}&page=1", UriKind.Relative);
             
             return _client.GetAsync<WordSearchContract>(url);
         }

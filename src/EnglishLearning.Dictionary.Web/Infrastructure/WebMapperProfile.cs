@@ -17,6 +17,7 @@ namespace EnglishLearning.Dictionary.Web.Infrastructure
 
             CreateMap<WordDetailsModel, WordDetails>();
             CreateMap<WordDefinitionModel, WordDefinition>();
+            CreateMap<WordSearchModel, WordSearch>();
         }
     }
 }
