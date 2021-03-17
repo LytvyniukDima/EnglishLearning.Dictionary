@@ -1,4 +1,5 @@
 using System;
+using EnglishLearning.Dictionary.ExternalServices.Handlers;
 using EnglishLearning.Dictionary.ExternalServices.Http;
 using EnglishLearning.Utilities.Identity.DelegationHandlers;
 using Microsoft.Extensions.Configuration;
@@ -15,12 +16,22 @@ namespace EnglishLearning.Dictionary.Host.Configuration
             var fileManagerAddress = configuration
                 .GetValue<Uri>("ExternalServices:FileManager");
 
+            var wordsApiAddress = configuration
+                .GetValue<Uri>("WordsApi");
+            
             services
                 .AddHttpClient<FileManagerHttpClient>(c => 
                 {
                     c.BaseAddress = fileManagerAddress;
                 })
                 .AddHttpMessageHandler<JwtInfoHeaderHandler>();
+
+            services
+                .AddHttpClient<WordApiHttpClient>(c =>
+                {
+                    c.BaseAddress = wordsApiAddress;
+                })
+                .AddHttpMessageHandler<WordApiTokenHandler>();
             
             return services;
         }
