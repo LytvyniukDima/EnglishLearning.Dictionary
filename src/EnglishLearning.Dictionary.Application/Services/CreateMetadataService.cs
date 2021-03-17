@@ -56,7 +56,7 @@ namespace EnglishLearning.Dictionary.Application.Services
                 }
                 
                 var englishLevelField = rowCells[indexMap[MetadataFileColumns.Level]];
-                var word = rowCells[indexMap[MetadataFileColumns.BaseWord]];
+                var word = rowCells[indexMap[MetadataFileColumns.BaseWord]].ToLower();
 
                 if (addedWordSet.Contains(word))
                 {
@@ -65,7 +65,7 @@ namespace EnglishLearning.Dictionary.Application.Services
                 
                 var metadata = new WordMetadataModel
                 {
-                    Word = word.ToLower(),
+                    Word = word,
                     GuideWord = rowCells[indexMap[MetadataFileColumns.GuideWord]],
                     Level = EnglishLevelMapInternal[englishLevelField],
                     POS = rowCells[indexMap[MetadataFileColumns.POS]],
