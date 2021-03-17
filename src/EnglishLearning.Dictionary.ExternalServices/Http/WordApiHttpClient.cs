@@ -36,5 +36,12 @@ namespace EnglishLearning.Dictionary.ExternalServices.Http
                 return null;
             }
         }
+        
+        public Task<WordSearchContract> SearchAsync(string pattern, int count)
+        {
+            var url = new Uri($"{WordsUrl}/?letterPattern={pattern}&count={count}&page=1", UriKind.Relative);
+            
+            return _client.GetAsync<WordSearchContract>(url);
+        }
     }
 }
