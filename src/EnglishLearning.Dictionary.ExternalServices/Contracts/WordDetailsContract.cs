@@ -6,6 +6,6 @@ namespace EnglishLearning.Dictionary.ExternalServices.Contracts
     {
         public string Word { get; set; }
         
-        public IReadOnlyList<WordDetailsContract> Results { get; set; }
+        public IReadOnlyList<WordDefinitionContract> Results { get; set; }
     }
 }

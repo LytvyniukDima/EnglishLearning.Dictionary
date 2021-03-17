@@ -1,5 +1,6 @@
 using AutoMapper;
 using EnglishLearning.Dictionary.DB.Entities;
+using EnglishLearning.Dictionary.Domain.Models;
 using EnglishLearning.Dictionary.Domain.Models.FileManager;
 using EnglishLearning.Dictionary.Domain.Models.Metadata;
 using EnglishLearning.Dictionary.ExternalServices.Contracts;
@@ -14,6 +15,9 @@ namespace EnglishLearning.Dictionary.Infrastructure.Infrastructure
             
             CreateMap<WordMetadataModel, WordMetadataMongoEntity>();
             CreateMap<WordMetadataMongoEntity, WordMetadataModel>();
+
+            CreateMap<WordDetailsContract, WordDetailsModel>();
+            CreateMap<WordDefinitionContract, WordDefinitionModel>();
         }
     }
 }

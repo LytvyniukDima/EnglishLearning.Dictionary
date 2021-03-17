@@ -26,6 +26,7 @@ namespace EnglishLearning.Dictionary.Host.Configuration
                 })
                 .AddHttpMessageHandler<JwtInfoHeaderHandler>();
 
+            services.AddTransient<WordApiTokenHandler>();
             services
                 .AddHttpClient<WordApiHttpClient>(c =>
                 {
