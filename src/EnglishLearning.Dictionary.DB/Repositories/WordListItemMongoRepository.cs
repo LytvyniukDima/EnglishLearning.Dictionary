@@ -16,8 +16,10 @@ namespace EnglishLearning.Dictionary.DB.Repositories
 
         public async Task<WordListItemEntity> AddOrUpdateAsync(WordListItemEntity entity)
         {
-            var filter = new FilterDefinitionBuilder<WordListItemEntity>()
-                .Eq(x => x.Id, entity.Id);
+            var filterBuilder = new FilterDefinitionBuilder<WordListItemEntity>();
+            var filter = filterBuilder.Eq(x => x.UserId, entity.UserId);
+            filter &= filterBuilder.Eq(x => x.Word, entity.Word);
+            
             var upsertOptions = new ReplaceOptions { IsUpsert = true };
             
             await _collection.ReplaceOneAsync(filter, entity, upsertOptions);
