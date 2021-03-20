@@ -28,14 +28,25 @@ namespace EnglishLearning.Dictionary.DB.Configuration
                                 Builders<WordMetadataMongoEntity>.IndexKeys.Ascending(x => x.Word),
                                 new CreateIndexOptions() { Unique = true }));
                     });
+
+                    options.HasIndex<WordListItemEntity>(index =>
+                    {
+                        index.CreateOne(new CreateIndexModel<WordListItemEntity>(
+                            Builders<WordListItemEntity>.IndexKeys
+                                .Ascending(x => x.UserId)
+                                .Ascending(x => x.Word),
+                            new CreateIndexOptions() { Unique = true }));
+                    });
                 })
                 .AddMongoCollectionNamesProvider(x =>
                 {
                     x.Add<WordMetadataMongoEntity>("EnglishWordMetadata");
+                    x.Add<WordListItemEntity>("WordList");
                 });
             
             services.AddTransient<IWordMetadataMongoRepository, WordMetadataMongoRepository>();
-
+            services.AddTransient<IWordListItemMongoRepository, WordListItemMongoRepository>();
+            
             return services;
         }
     }

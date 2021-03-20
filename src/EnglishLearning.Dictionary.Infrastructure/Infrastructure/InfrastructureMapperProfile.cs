@@ -18,6 +18,11 @@ namespace EnglishLearning.Dictionary.Infrastructure.Infrastructure
 
             CreateMap<WordDetailsContract, WordDetailsModel>();
             CreateMap<WordDefinitionContract, WordDefinitionModel>();
+
+            CreateMap<WordDefinitionEntity, WordDefinitionModel>();
+            CreateMap<WordDefinitionModel, WordDefinitionEntity>();
+
+            CreateMap<WordListItemEntity, WordListItemModel>();
         }
     }
 }

@@ -4,7 +4,7 @@ using EnglishLearning.Dictionary.Application.Abstract;
 using EnglishLearning.Dictionary.Web.Contracts;
 using Microsoft.AspNetCore.Mvc;
 
-namespace EnglishLearning.Dictionary.Web
+namespace EnglishLearning.Dictionary.Web.Controllers
 {
     [Route("/api/dictionary/word")]
     [ApiController]

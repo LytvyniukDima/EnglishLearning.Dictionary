@@ -17,7 +17,13 @@ namespace EnglishLearning.Dictionary.Web.Infrastructure
 
             CreateMap<WordDetailsModel, WordDetails>();
             CreateMap<WordDefinitionModel, WordDefinition>();
+            CreateMap<WordDefinition, WordDefinitionModel>();
             CreateMap<WordSearchModel, WordSearch>();
+
+            CreateMap<AddWordListDefinitionCommand, AddWordListDefinitionCommandModel>()
+                .ForMember(dst => dst.UserId, opt => opt.Ignore());
+
+            CreateMap<WordListItemModel, WordListItem>();
         }
     }
 }

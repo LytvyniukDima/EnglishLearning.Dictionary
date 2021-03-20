@@ -15,6 +15,7 @@ namespace EnglishLearning.Dictionary.Infrastructure.Configuration
             services.AddTransient<IFileRepository, FileRepository>();
             services.AddTransient<IWordMetadataRepository, WordMetadataRepository>();
             services.AddTransient<IWordRepository, WordRepository>();
+            services.AddTransient<IWordListItemRepository, WordListItemRepository>();
             
             services.AddDbConfiguration(configuration);
             

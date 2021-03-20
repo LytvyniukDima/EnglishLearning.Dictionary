@@ -8,7 +8,7 @@ using EnglishLearning.Utilities.Identity.Abstractions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace EnglishLearning.Dictionary.Web
+namespace EnglishLearning.Dictionary.Web.Controllers
 {
     [Route("/api/dictionary/word-metadata")]
     [ApiController]
