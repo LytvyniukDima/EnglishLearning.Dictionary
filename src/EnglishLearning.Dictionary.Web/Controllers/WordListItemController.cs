@@ -57,5 +57,18 @@ namespace EnglishLearning.Dictionary.Web.Controllers
             var webModels = _mapper.Map<IReadOnlyList<WordListItem>>(models);
             return Ok(webModels);
         }
+
+        [EnglishLearningAuthorize]
+        [HttpPost("learned")]
+        public async Task<IActionResult> AddLearnedWords([FromBody] LearnedWordsCommand command)
+        {
+            var userId = _jwtInfoProvider.UserId;
+            var model = _mapper.Map<LearnedWordsCommandModel>(command);
+            model.UserId = userId;
+
+            await _commandService.AddLearnedWordsAsync(model);
+            
+            return Ok();
+        }
     }
 }

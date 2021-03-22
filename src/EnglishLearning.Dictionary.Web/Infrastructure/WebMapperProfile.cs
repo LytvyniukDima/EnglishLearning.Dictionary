@@ -22,8 +22,11 @@ namespace EnglishLearning.Dictionary.Web.Infrastructure
 
             CreateMap<AddWordListDefinitionCommand, AddWordListDefinitionCommandModel>()
                 .ForMember(dst => dst.UserId, opt => opt.Ignore());
-
+            
             CreateMap<WordListItemModel, WordListItem>();
+
+            CreateMap<LearnedWordsCommand, LearnedWordsCommandModel>()
+                .ForMember(dst => dst.UserId, opt => opt.Ignore());
         }
     }
 }

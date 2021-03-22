@@ -17,6 +17,8 @@ namespace EnglishLearning.Dictionary.DB.Entities
         
         public string Word { get; set; }
         
+        public bool IsLearned { get; set; }
+        
         public List<WordDefinitionEntity> WordDefinitions { get; set; }
     }
 }

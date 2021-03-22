@@ -6,5 +6,7 @@ namespace EnglishLearning.Dictionary.Application.Abstract
     public interface IWordListItemCommandService
     {
         Task AddDefinitionAsync(AddWordListDefinitionCommandModel command);
+
+        Task AddLearnedWordsAsync(LearnedWordsCommandModel command);
     }
 }

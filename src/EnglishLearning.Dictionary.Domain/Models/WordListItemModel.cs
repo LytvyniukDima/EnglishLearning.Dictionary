@@ -11,6 +11,8 @@ namespace EnglishLearning.Dictionary.Domain.Models
         
         public string Word { get; set; }
         
+        public bool IsLearned { get; set; }
+        
         public IReadOnlyList<WordDefinitionModel> WordDefinitions { get; set; }
     }
 }

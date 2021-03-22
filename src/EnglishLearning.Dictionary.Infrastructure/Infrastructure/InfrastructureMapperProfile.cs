@@ -23,6 +23,7 @@ namespace EnglishLearning.Dictionary.Infrastructure.Infrastructure
             CreateMap<WordDefinitionModel, WordDefinitionEntity>();
 
             CreateMap<WordListItemEntity, WordListItemModel>();
+            CreateMap<WordListItemModel, WordListItemEntity>();
         }
     }
 }

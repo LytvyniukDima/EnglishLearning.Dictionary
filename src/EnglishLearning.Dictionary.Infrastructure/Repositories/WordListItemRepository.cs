@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using EnglishLearning.Dictionary.DB.Abstract;
@@ -51,6 +52,22 @@ namespace EnglishLearning.Dictionary.Infrastructure.Repositories
 
                 await _mongoRepository.AddOrUpdateAsync(entity);   
             }
+        }
+
+        public async Task<IReadOnlyList<WordListItemModel>> FindAllAsync(Guid userId, IReadOnlyList<string> words)
+        {
+            var entities = await _mongoRepository.FindAllAsync(x =>
+                x.UserId == userId
+                && words.Contains(x.Word));
+
+            return _mapper.Map<IReadOnlyList<WordListItemModel>>(entities);
+        }
+        
+        public Task UpdateAllAsync(IReadOnlyList<WordListItemModel> words)
+        {
+            var entities = _mapper.Map<IReadOnlyList<WordListItemEntity>>(words);
+
+            return _mongoRepository.UpdateAllAsync(entities);
         }
     }
 }

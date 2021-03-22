@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using EnglishLearning.Dictionary.DB.Abstract;
 using EnglishLearning.Dictionary.DB.Entities;
@@ -24,6 +25,14 @@ namespace EnglishLearning.Dictionary.DB.Repositories
             
             await _collection.ReplaceOneAsync(filter, entity, upsertOptions);
             return entity;
+        }
+
+        public async Task UpdateAllAsync(IReadOnlyList<WordListItemEntity> entities)
+        {
+            foreach (var entity in entities)
+            {
+                await UpdateAsync(entity);
+            }
         }
     }
 }

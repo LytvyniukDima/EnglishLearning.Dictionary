@@ -8,6 +8,8 @@ namespace EnglishLearning.Dictionary.Web.Contracts
 
         public string Word { get; set; }
         
+        public bool IsLearned { get; set; }
+        
         public IReadOnlyList<WordDefinition> WordDefinitions { get; set; }
     }
 }

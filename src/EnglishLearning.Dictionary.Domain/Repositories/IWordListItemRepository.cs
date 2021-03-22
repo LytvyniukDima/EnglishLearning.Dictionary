@@ -10,5 +10,9 @@ namespace EnglishLearning.Dictionary.Domain.Repositories
         Task<IReadOnlyList<WordListItemModel>> FindAllAsync(Guid userId);
 
         Task AddWordListItemDefinitionAsync(AddWordListDefinitionCommandModel command);
+
+        Task<IReadOnlyList<WordListItemModel>> FindAllAsync(Guid userId, IReadOnlyList<string> words);
+
+        Task UpdateAllAsync(IReadOnlyList<WordListItemModel> words);
     }
 }
