@@ -44,8 +44,7 @@ namespace EnglishLearning.Dictionary.Application.Services
             
             var headerFields = parser.ReadFields();
             var indexMap = GetFieldsIndexMap(headerFields);
-            var addedWordSet = addedWords.ToHashSet();
-            var wordsMetadata = new List<WordMetadataModel>();
+            var wordsMetadataDictionary = new Dictionary<string, WordMetadataModel>();
             
             while (parser.PeekChars(1) != null)
             {
@@ -55,11 +54,21 @@ namespace EnglishLearning.Dictionary.Application.Services
                     continue;
                 }
                 
-                var englishLevelField = rowCells[indexMap[MetadataFileColumns.Level]];
+                var englishLevel = EnglishLevelMapInternal[rowCells[indexMap[MetadataFileColumns.Level]]];
                 var word = rowCells[indexMap[MetadataFileColumns.BaseWord]].ToLower();
-
-                if (addedWordSet.Contains(word))
+                var topic = rowCells[indexMap[MetadataFileColumns.Topic]];
+                
+                if (wordsMetadataDictionary.TryGetValue(word, out var metadataModel))
                 {
+                    if (!string.IsNullOrEmpty(topic) && !metadataModel.Topics.Contains(topic))
+                    {
+                        metadataModel.Topics.Add(topic);
+                    }
+
+                    metadataModel.Level = metadataModel.Level > englishLevel
+                        ? englishLevel
+                        : metadataModel.Level;
+                    
                     continue;
                 }
                 
@@ -67,16 +76,15 @@ namespace EnglishLearning.Dictionary.Application.Services
                 {
                     Word = word,
                     GuideWord = rowCells[indexMap[MetadataFileColumns.GuideWord]],
-                    Level = EnglishLevelMapInternal[englishLevelField],
+                    Level = englishLevel,
                     POS = rowCells[indexMap[MetadataFileColumns.POS]],
-                    Topic = rowCells[indexMap[MetadataFileColumns.Topic]],
+                    Topics = string.IsNullOrEmpty(topic) ? new List<string>() : new List<string>() { topic },
                 };
-
-                addedWordSet.Add(metadata.Word);
-                wordsMetadata.Add(metadata);
+                
+                wordsMetadataDictionary[word] = metadata;
             }
 
-            await _wordMetadataRepository.AddAllAsync(wordsMetadata);
+            await _wordMetadataRepository.AddAllAsync(wordsMetadataDictionary.Values.ToList());
         }
 
         private IReadOnlyDictionary<string, int> GetFieldsIndexMap(string[] fields)

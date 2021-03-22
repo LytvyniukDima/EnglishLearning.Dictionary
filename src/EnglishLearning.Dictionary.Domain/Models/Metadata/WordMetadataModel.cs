@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using EnglishLearning.Dictionary.Common.Models;
 
 namespace EnglishLearning.Dictionary.Domain.Models.Metadata
@@ -12,6 +13,6 @@ namespace EnglishLearning.Dictionary.Domain.Models.Metadata
         
         public string POS { get; set; }
         
-        public string Topic { get; set; }
+        public List<string> Topics { get; set; }
     }
 }

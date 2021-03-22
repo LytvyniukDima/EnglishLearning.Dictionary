@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using EnglishLearning.Dictionary.Common.Models;
 
 namespace EnglishLearning.Dictionary.Web.Contracts.Metadata
@@ -12,6 +13,6 @@ namespace EnglishLearning.Dictionary.Web.Contracts.Metadata
         
         public string POS { get; set; }
         
-        public string Topic { get; set; }
+        public IReadOnlyList<string> Topics { get; set; }
     }
 }

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using EnglishLearning.Dictionary.Common.Models;
 using EnglishLearning.Utilities.Persistence.Interfaces;
 using MongoDB.Bson;
@@ -19,6 +20,6 @@ namespace EnglishLearning.Dictionary.DB.Entities
         
         public string POS { get; set; }
         
-        public string Topic { get; set; }
+        public IReadOnlyList<string> Topics { get; set; }
     }
 }
