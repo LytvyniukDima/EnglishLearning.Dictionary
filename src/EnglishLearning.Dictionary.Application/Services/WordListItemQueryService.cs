@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using EnglishLearning.Dictionary.Application.Abstract;
 using EnglishLearning.Dictionary.Domain.Models;
@@ -16,9 +17,12 @@ namespace EnglishLearning.Dictionary.Application.Services
             _repository = repository;
         }
         
-        public Task<IReadOnlyList<WordListItemModel>> FindAllAsync(Guid userId)
+        public async Task<IReadOnlyList<WordListItemModel>> FindAllAsync(Guid userId)
         {
-            return _repository.FindAllAsync(userId);
+            var items = await _repository.FindAllAsync(userId);
+            return items
+                .OrderBy(x => x.Word)
+                .ToList();
         }
     }
 }
