@@ -7,5 +7,7 @@ namespace EnglishLearning.Dictionary.Application.Abstract
     public interface IWordMetadataQueryService
     {
         Task<IReadOnlyList<WordMetadataModel>> GetAsync(WordMetadataQueryModel query);
+
+        Task<IReadOnlyList<WordMetadataModel>> FindByTopicsAsync(IReadOnlyList<string> topics);
     }
 }

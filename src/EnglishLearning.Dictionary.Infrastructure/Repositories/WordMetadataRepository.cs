@@ -39,6 +39,14 @@ namespace EnglishLearning.Dictionary.Infrastructure.Repositories
             return models;
         }
 
+        public async Task<IReadOnlyList<WordMetadataModel>> FindAllByTopicsAsync(IReadOnlyList<string> topics)
+        {
+            var entities = await _mongoRepository.FindAllAsync(
+                met => met.Topics.Any(x => topics.Contains(x)));
+
+            return _mapper.Map<IReadOnlyList<WordMetadataModel>>(entities);
+        }
+
         public async Task<IReadOnlyList<string>> GetAllWordsAsync()
         {
             var entities = await _mongoRepository.GetAllAsync();

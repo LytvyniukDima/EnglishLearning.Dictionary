@@ -54,5 +54,15 @@ namespace EnglishLearning.Dictionary.Web.Controllers
             
             return Ok(webModels);
         }
+        
+        [HttpGet("query/filter")]
+        public async Task<IActionResult> Get([FromQuery] string[] topic)
+        {
+            var words = await _wordMetadataQueryService.FindByTopicsAsync(topic);
+
+            var webModels = _mapper.Map<IReadOnlyList<WordMetadata>>(words);
+            
+            return Ok(webModels);
+        }
     }
 }

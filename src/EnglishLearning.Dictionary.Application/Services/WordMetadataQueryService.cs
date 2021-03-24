@@ -39,7 +39,12 @@ namespace EnglishLearning.Dictionary.Application.Services
 
             return wordsMetadata;
         }
-        
+
+        public Task<IReadOnlyList<WordMetadataModel>> FindByTopicsAsync(IReadOnlyList<string> topics)
+        {
+            return _metadataRepository.FindAllByTopicsAsync(topics);
+        }
+
         private string MapWordsWithApostrophe(string word)
         {
             if (AbbreviationConstants.WordsWithApostropheMap.TryGetValue(word, out string mapped))
