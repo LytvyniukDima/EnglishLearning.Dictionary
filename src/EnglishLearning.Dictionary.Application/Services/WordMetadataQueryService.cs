@@ -45,6 +45,16 @@ namespace EnglishLearning.Dictionary.Application.Services
             return _metadataRepository.FindAllByTopicsAsync(topics);
         }
 
+        public async Task<IReadOnlyCollection<string>> GetAllTopicsAsync()
+        {
+            var words = await _metadataRepository.GetAllAsync();
+            var topics = words
+                .SelectMany(x => x.Topics)
+                .ToHashSet();
+
+            return topics;
+        }
+
         private string MapWordsWithApostrophe(string word)
         {
             if (AbbreviationConstants.WordsWithApostropheMap.TryGetValue(word, out string mapped))

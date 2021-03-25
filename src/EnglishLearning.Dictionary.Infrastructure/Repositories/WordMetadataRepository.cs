@@ -53,5 +53,13 @@ namespace EnglishLearning.Dictionary.Infrastructure.Repositories
 
             return entities.Select(x => x.Word).ToList();
         }
+
+        public async Task<IReadOnlyList<WordMetadataModel>> GetAllAsync()
+        {
+            var entities = await _mongoRepository.GetAllAsync();
+            var models = _mapper.Map<IReadOnlyList<WordMetadataModel>>(entities);
+
+            return models;
+        }
     }
 }

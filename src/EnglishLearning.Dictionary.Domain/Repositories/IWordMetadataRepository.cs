@@ -13,5 +13,7 @@ namespace EnglishLearning.Dictionary.Domain.Repositories
         Task<IReadOnlyList<WordMetadataModel>> FindAllByTopicsAsync(IReadOnlyList<string> topics);
         
         Task<IReadOnlyList<string>> GetAllWordsAsync();
+        
+        Task<IReadOnlyList<WordMetadataModel>> GetAllAsync();
     }
 }

@@ -64,5 +64,14 @@ namespace EnglishLearning.Dictionary.Web.Controllers
             
             return Ok(webModels);
         }
+        
+        [EnglishLearningAuthorize(AuthorizeRole.Admin)]
+        [HttpGet("topics")]
+        public async Task<IActionResult> GetTopics()
+        {
+            var topics = await _wordMetadataQueryService.GetAllTopicsAsync();
+
+            return Ok(topics);
+        }
     }
 }

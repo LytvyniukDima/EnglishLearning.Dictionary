@@ -9,5 +9,7 @@ namespace EnglishLearning.Dictionary.Application.Abstract
         Task<IReadOnlyList<WordMetadataModel>> GetAsync(WordMetadataQueryModel query);
 
         Task<IReadOnlyList<WordMetadataModel>> FindByTopicsAsync(IReadOnlyList<string> topics);
+
+        Task<IReadOnlyCollection<string>> GetAllTopicsAsync();
     }
 }
