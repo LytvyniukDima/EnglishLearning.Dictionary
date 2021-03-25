@@ -27,6 +27,8 @@ namespace EnglishLearning.Dictionary.Web.Infrastructure
 
             CreateMap<LearnedWordsCommand, LearnedWordsCommandModel>()
                 .ForMember(dst => dst.UserId, opt => opt.Ignore());
+
+            CreateMap<WordSearchQuery, WordSearchQueryModel>();
         }
     }
 }

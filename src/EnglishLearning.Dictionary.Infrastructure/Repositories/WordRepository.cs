@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using EnglishLearning.Dictionary.Domain.Models;
@@ -24,6 +25,17 @@ namespace EnglishLearning.Dictionary.Infrastructure.Repositories
             var details = await _client.GetWordDetailsAsync(word);
 
             return _mapper.Map<WordDetailsModel>(details);
+        }
+
+        public async Task<IReadOnlyList<WordDetailsModel>> FindAllAsync(IReadOnlyList<string> words)
+        {
+            var getTasks = words
+                .Select(x => GetWordDetailsAsync(x))
+                .ToList();
+
+            var results = await Task.WhenAll(getTasks);
+
+            return results;
         }
 
         public async Task<IReadOnlyList<string>> SearchAsync(string word)

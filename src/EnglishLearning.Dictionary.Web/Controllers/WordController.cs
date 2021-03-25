@@ -1,6 +1,8 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using EnglishLearning.Dictionary.Application.Abstract;
+using EnglishLearning.Dictionary.Domain.Models;
 using EnglishLearning.Dictionary.Web.Contracts;
 using Microsoft.AspNetCore.Mvc;
 
@@ -28,6 +30,18 @@ namespace EnglishLearning.Dictionary.Web.Controllers
             var webModel = _mapper.Map<WordSearch>(searchModel);
 
             return Ok(webModel);
+        }
+        
+        [HttpPost("query")]
+        public async Task<IActionResult> FindAll([FromBody] WordSearchQuery query)
+        {
+            var queryModel = _mapper.Map<WordSearchQueryModel>(query);
+            
+            var words = await _queryService.FindAllAsync(queryModel);
+
+            var webModels = _mapper.Map<IReadOnlyList<WordDetails>>(words);
+
+            return Ok(webModels);
         }
     }
 }

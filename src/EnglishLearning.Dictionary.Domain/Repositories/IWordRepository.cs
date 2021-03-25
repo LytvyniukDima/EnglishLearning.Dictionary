@@ -8,6 +8,8 @@ namespace EnglishLearning.Dictionary.Domain.Repositories
     {
         Task<WordDetailsModel> GetWordDetailsAsync(string word);
         
+        Task<IReadOnlyList<WordDetailsModel>> FindAllAsync(IReadOnlyList<string> words);
+        
         Task<IReadOnlyList<string>> SearchAsync(string word);
     }
 }

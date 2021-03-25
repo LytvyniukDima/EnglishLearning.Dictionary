@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using EnglishLearning.Dictionary.Application.Abstract;
 using EnglishLearning.Dictionary.Domain.Models;
@@ -33,6 +35,15 @@ namespace EnglishLearning.Dictionary.Application.Services
                 Word = null,
                 SimilarWords = similarWords,
             };
+        }
+
+        public async Task<IReadOnlyList<WordDetailsModel>> FindAllAsync(WordSearchQueryModel query)
+        {
+            var wordDetails = await _wordRepository.FindAllAsync(query.Words);
+
+            return wordDetails
+                .Where(x => x != null)
+                .ToList();
         }
     }
 }
