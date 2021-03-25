@@ -8,5 +8,7 @@ namespace EnglishLearning.Dictionary.Application.Abstract
     public interface IWordListItemQueryService
     {
         Task<IReadOnlyList<WordListItemModel>> FindAllAsync(Guid userId);
+
+        Task<IReadOnlyList<WordListItemModel>> GetRandomWordsToLearnAsync(Guid userId, int count);
     }
 }

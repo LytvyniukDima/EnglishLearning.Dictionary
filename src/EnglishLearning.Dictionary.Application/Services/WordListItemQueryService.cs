@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using EnglishLearning.Dictionary.Application.Abstract;
 using EnglishLearning.Dictionary.Domain.Models;
 using EnglishLearning.Dictionary.Domain.Repositories;
+using EnglishLearning.Utilities.Linq.Extensions;
 
 namespace EnglishLearning.Dictionary.Application.Services
 {
@@ -23,6 +24,17 @@ namespace EnglishLearning.Dictionary.Application.Services
             return items
                 .OrderBy(x => x.Word)
                 .ToList();
+        }
+
+        public async Task<IReadOnlyList<WordListItemModel>> GetRandomWordsToLearnAsync(Guid userId, int count)
+        {
+            var items = await _repository.GetNotLearnedAsync(userId);
+
+            var randomItems = items
+                .GetRandomCountOfElements(count)
+                .ToList();
+
+            return randomItems;
         }
     }
 }

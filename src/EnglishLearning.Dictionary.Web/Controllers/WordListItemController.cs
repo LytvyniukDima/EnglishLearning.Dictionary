@@ -3,9 +3,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using EnglishLearning.Dictionary.Application.Abstract;
 using EnglishLearning.Dictionary.Domain.Models;
-using EnglishLearning.Dictionary.Domain.Models.Metadata;
 using EnglishLearning.Dictionary.Web.Contracts;
-using EnglishLearning.Dictionary.Web.Contracts.Metadata;
 using EnglishLearning.Utilities.Identity.Abstractions;
 using Microsoft.AspNetCore.Mvc;
 
@@ -69,6 +67,18 @@ namespace EnglishLearning.Dictionary.Web.Controllers
             await _commandService.AddLearnedWordsAsync(model);
             
             return Ok();
+        }
+        
+        [EnglishLearningAuthorize]
+        [HttpGet("learned/random/{count}")]
+        public async Task<IActionResult> GetRandomWordsToLearn([FromRoute] int count)
+        {
+            var userId = _jwtInfoProvider.UserId;
+
+            var words = await _queryService.GetRandomWordsToLearnAsync(userId, count);
+            
+            var webModels = _mapper.Map<IReadOnlyList<WordListItem>>(words);
+            return Ok(webModels);
         }
     }
 }

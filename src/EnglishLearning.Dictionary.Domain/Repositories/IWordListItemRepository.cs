@@ -13,6 +13,8 @@ namespace EnglishLearning.Dictionary.Domain.Repositories
 
         Task<IReadOnlyList<WordListItemModel>> FindAllAsync(Guid userId, IReadOnlyList<string> words);
 
+        Task<IReadOnlyList<WordListItemModel>> GetNotLearnedAsync(Guid userId);
+        
         Task UpdateAllAsync(IReadOnlyList<WordListItemModel> words);
     }
 }

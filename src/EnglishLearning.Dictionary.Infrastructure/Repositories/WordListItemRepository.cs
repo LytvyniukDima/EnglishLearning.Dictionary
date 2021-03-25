@@ -62,7 +62,14 @@ namespace EnglishLearning.Dictionary.Infrastructure.Repositories
 
             return _mapper.Map<IReadOnlyList<WordListItemModel>>(entities);
         }
-        
+
+        public async Task<IReadOnlyList<WordListItemModel>> GetNotLearnedAsync(Guid userId)
+        {
+            var entities = await _mongoRepository.FindAllAsync(x => !x.IsLearned);
+
+            return _mapper.Map<IReadOnlyList<WordListItemModel>>(entities);
+        }
+
         public Task UpdateAllAsync(IReadOnlyList<WordListItemModel> words)
         {
             var entities = _mapper.Map<IReadOnlyList<WordListItemEntity>>(words);
