@@ -8,6 +8,7 @@ using EnglishLearning.Dictionary.Web.Infrastructure;
 using EnglishLearning.Utilities.General.Extensions;
 using EnglishLearning.Utilities.Identity.Configuration;
 using EnglishLearning.Utilities.Persistence.Redis.Configuration;
+using EnglishLearning.Utilities.Speech.Configuration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -55,7 +56,8 @@ namespace EnglishLearning.Dictionary.Host
             services
                 .AddEnglishLearningHttp(Configuration)
                 .AddApplication()
-                .AddInfrastructure(Configuration);
+                .AddInfrastructure(Configuration)
+                .AddEnglishLearningSpeech(Configuration);
 
             services.AddAutoMapper(
                 typeof(WebMapperProfile).Assembly,

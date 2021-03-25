@@ -13,6 +13,7 @@ namespace EnglishLearning.Dictionary.Application.Configuration
             services.AddTransient<IWordQueryService, WordQueryService>();
             services.AddTransient<IWordListItemCommandService, WordListItemCommandService>();
             services.AddTransient<IWordListItemQueryService, WordListItemQueryService>();
+            services.AddTransient<IAudioService, AudioService>();
             
             return services;
         }
