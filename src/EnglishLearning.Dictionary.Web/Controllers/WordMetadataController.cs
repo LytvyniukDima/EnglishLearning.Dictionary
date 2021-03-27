@@ -55,10 +55,10 @@ namespace EnglishLearning.Dictionary.Web.Controllers
             return Ok(webModels);
         }
         
-        [HttpGet("query/filter")]
-        public async Task<IActionResult> Get([FromQuery] string[] topic)
+        [HttpPost("query/filter")]
+        public async Task<IActionResult> Get([FromBody] WordMetadataFilterQuery query)
         {
-            var words = await _wordMetadataQueryService.FindByTopicsAsync(topic);
+            var words = await _wordMetadataQueryService.FindAllAsync(query.Topic, query.Level);
 
             var webModels = _mapper.Map<IReadOnlyList<WordMetadata>>(words);
             

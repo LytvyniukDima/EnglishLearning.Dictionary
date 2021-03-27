@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using EnglishLearning.Dictionary.Common.Models;
 using EnglishLearning.Dictionary.Domain.Models.Metadata;
 
 namespace EnglishLearning.Dictionary.Application.Abstract
@@ -8,7 +9,7 @@ namespace EnglishLearning.Dictionary.Application.Abstract
     {
         Task<IReadOnlyList<WordMetadataModel>> GetAsync(WordMetadataQueryModel query);
 
-        Task<IReadOnlyList<WordMetadataModel>> FindByTopicsAsync(IReadOnlyList<string> topics);
+        Task<IReadOnlyList<WordMetadataModel>> FindAllAsync(string topic, DictionaryEnglishLevel level);
 
         Task<IReadOnlyCollection<string>> GetAllTopicsAsync();
     }

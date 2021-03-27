@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using EnglishLearning.Dictionary.Application.Abstract;
 using EnglishLearning.Dictionary.Application.Constants;
+using EnglishLearning.Dictionary.Common.Models;
 using EnglishLearning.Dictionary.Domain.Models.Metadata;
 using EnglishLearning.Dictionary.Domain.Repositories;
 using Microsoft.Extensions.Logging;
@@ -40,9 +41,9 @@ namespace EnglishLearning.Dictionary.Application.Services
             return wordsMetadata;
         }
 
-        public Task<IReadOnlyList<WordMetadataModel>> FindByTopicsAsync(IReadOnlyList<string> topics)
+        public Task<IReadOnlyList<WordMetadataModel>> FindAllAsync(string topic, DictionaryEnglishLevel level)
         {
-            return _metadataRepository.FindAllByTopicsAsync(topics);
+            return _metadataRepository.FindAllAsync(topic, level);
         }
 
         public async Task<IReadOnlyCollection<string>> GetAllTopicsAsync()

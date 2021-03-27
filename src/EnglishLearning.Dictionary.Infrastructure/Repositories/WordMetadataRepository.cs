@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using EnglishLearning.Dictionary.Common.Models;
 using EnglishLearning.Dictionary.DB.Abstract;
 using EnglishLearning.Dictionary.DB.Entities;
 using EnglishLearning.Dictionary.Domain.Models.Metadata;
@@ -39,10 +40,10 @@ namespace EnglishLearning.Dictionary.Infrastructure.Repositories
             return models;
         }
 
-        public async Task<IReadOnlyList<WordMetadataModel>> FindAllByTopicsAsync(IReadOnlyList<string> topics)
+        public async Task<IReadOnlyList<WordMetadataModel>> FindAllAsync(string topic, DictionaryEnglishLevel level)
         {
             var entities = await _mongoRepository.FindAllAsync(
-                met => met.Topics.Any(x => topics.Contains(x)));
+                x => x.Level == level && x.Topics.Contains(topic));
 
             return _mapper.Map<IReadOnlyList<WordMetadataModel>>(entities);
         }
